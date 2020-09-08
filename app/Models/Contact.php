@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model
 {
-    use HasFactory;
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }

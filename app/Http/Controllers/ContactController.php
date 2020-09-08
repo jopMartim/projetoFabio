@@ -14,7 +14,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+         $contacts = Contact::all();
+        return view('contacts.index', compact('contacts'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('contacts.create');
     }
 
     /**
@@ -35,7 +36,14 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+        $contact = new contact();
+        $contact->contact = $request->input('name');
+        $contact->contact = $request->input('email');
+        $contact->contact = $request->input('phone');
+        $contact->save();
+        return redirect('/categories');
     }
 
     /**
